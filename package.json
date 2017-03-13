@@ -1,5 +1,5 @@
 {
-	"name": "ReactNativePay",
+	"name": "react-native-pay",
 	"version": "0.1.0",
 	"description": "rn支付宝，微信支付",
 	"main": "index.js",
