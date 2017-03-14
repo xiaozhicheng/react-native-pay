@@ -1,5 +1,5 @@
 {
-  "name": "react-native-pay",
+  "name": "react-native-paysdk",
   "version": "0.1.0",
   "description": "react-native支付宝，微信支付",
   "main": "index.js",
@@ -22,7 +22,7 @@
   "keywords": [
     "支付宝，微信，支付"
   ],
-  "author": "saxoncheng",
+  "author": "xiaozhicheng",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/xiaozhicheng/react-native-pay/issues"
