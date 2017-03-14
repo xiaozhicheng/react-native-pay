@@ -1,4 +1,4 @@
-package com.reactnativepay.payment.alipay;
+package com.reactnativepay.alipay;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;

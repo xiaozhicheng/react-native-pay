@@ -1,4 +1,4 @@
-package com.reactnativepay.payment.alipay;
+package com.reactnativepay.alipay;
 
 public final class Base64 {
 

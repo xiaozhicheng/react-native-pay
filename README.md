@@ -56,3 +56,54 @@ android/app/src/main/java/<你的包名>/MainApplication.java中添加如下两�
 	      return mReactNativeHost;
 	  }
 	}
+
+###如何使用
+####Android
+		
+1.支付宝
+	申请自己支付宝商户账号，获取到PARTNER，SELLER，RSA_PRIVATE三个值
+	
+	import RnPay from 'react-native';
+
+	onAliPay(){
+		var params = {
+			money:'',
+			subject:'',
+			partner:'',
+			body:'',
+			sellerId:'',
+			outTraceNo:'',
+			notifyUrl:'',
+			privateRsa:''
+		}
+		RnPay.onAliPay(params)
+			.then((res)=>{
+			})
+			.catch(e=>{
+			})
+     }
+
+2.微信
+	申请商户，并获取到APPID，
+
+	import RnPay from 'react-native';
+
+	onWxPay(){
+		var params = {
+			money:'',
+			appid:'',
+			partnerid:'',
+			parpayid:'',
+			packageValue:'',
+			noncestr:'',
+			timestamp:'',
+			sign:''
+		}
+		RnPay.onWxPay(params)
+			.then((res)=>{
+			})
+			.catch(e=>{
+			})
+     }
+
+以上所有未知参数 皆可从后台人员获知

@@ -3,5 +3,4 @@
  */
 import {NativeModules} from 'react-native';
 
-
-export default RnPay = NativeModules.RnPay;
+export default NativeModules.RnPay;

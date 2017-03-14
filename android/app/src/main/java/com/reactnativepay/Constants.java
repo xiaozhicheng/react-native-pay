@@ -9,15 +9,21 @@ public class Constants {
     /**
      * 支付类型
      */
-    public static final String TYPE_WX = "weixin";
-    public static final String TYPE_ALI = "alipay";
+    public static final String MONEY = "money";
 
-    public static final String PKPAYORDER = "pkpayorder";
-    public static final String WXREQ = "wxreq";
+    //支付宝
+    public static final String SUBJECT = "subject";
+    public static final String PARTNER = "partner";
+    public static final String BODY = "body";
+    public static final String SELLERID = "sellerId";
+    public static final String OUTTRACENO = "outTraceNo";
+    public static final String NOTIFYURL = "notifyUrl";
+    public static final String PRIVATERSA = "privateRsa";
 
+    //微信
     public static final String APPID = "appid";
     public static final String PARTNERID = "partnerid";
-    public static final String PREPAYID = "parpayid";
+    public static final String PARPAYID = "parpayid";
     public static final String PACKAGEVALUE = "packageValue";
     public static final String NONCESTR = "noncestr";
     public static final String TIMESTAMP = "timestamp";

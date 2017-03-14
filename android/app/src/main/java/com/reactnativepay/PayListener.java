@@ -1,4 +1,4 @@
-package com.reactnativepay.payment;
+package com.reactnativepay;
 
 /**
  * 支付监听器

@@ -1,4 +1,4 @@
-package com.reactnativepay.payment.wxpay;
+package com.reactnativepay.wxpay;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -6,10 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
-import com.reactnativepay.paysdk.PayConfig;
-import com.reactnativepay.payment.PayInfo;
-import com.reactnativepay.payment.Pay;
-import com.reactnativepay.payment.PayListener;
+import com.reactnativepay.PayListener;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelpay.PayReq;
@@ -21,22 +18,24 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
  * 微信支付
  * @author CXZ
  */
-public class WXPay implements Pay {
+public class WXPay {
 
     public final static String ACTION = "com.pay.WXPayResultRecevier";
 
     private final IWXAPI msgApi;
     private Activity activity;
+    private WxpayInfo payInfo;
     private PayListener listener;
     private WXPayResultRecevier resultRecevier;
 
-    public WXPay(Activity activity) {
+    public WXPay(Activity activity, WxpayInfo payInfo) {
         this.activity = activity;
-        msgApi = WXAPIFactory.createWXAPI(activity, null);
-        // sb = new StringBuffer();
+        this.payInfo = payInfo;
+        msgApi = WXAPIFactory.createWXAPI(activity, payInfo.getAppId(),true);
+        msgApi.registerApp(payInfo.getAppId());
+
         //注册微信支付结果广播接收器
         resultRecevier=new WXPayResultRecevier();
-        msgApi.registerApp(PayConfig.APP_ID);
         IntentFilter filter=new IntentFilter();
         filter.addAction(WXPay.ACTION);
         filter.addCategory("android.intent.category.DEFAULT");
@@ -46,32 +45,28 @@ public class WXPay implements Pay {
     /**
      * 发起支付
      */
-    @Override
-    public void pay(PayInfo payInfo, PayListener listener) {
+    public void pay(PayListener listener) {
         this.listener = listener;
-        sendPayReq(payInfo);
+        sendPayReq(this.payInfo);
     }
 
     /**
      * 发起支付
      * @param payInfo
      */
-    private void sendPayReq(PayInfo payInfo) {
-        msgApi.registerApp(PayConfig.APP_ID);
+    private void sendPayReq(WxpayInfo payInfo) {
         msgApi.sendReq(getPayReq(payInfo));
     }
 
-    private BaseReq getPayReq(PayInfo payInfo) {
-        WXPayReq payReq=payInfo.getPayReq();
+    private BaseReq getPayReq(WxpayInfo payInfo) {
         PayReq req=new PayReq();
-        req.appId = payReq.getAppid();
-        req.partnerId =payReq.getPartnerid();
-        req.prepayId =payReq.getPrepayid();
-        req.packageValue = payReq.getPackageValue();
-        req.nonceStr =payInfo.getTraceNo();
-        req.timeStamp = payReq.getTimestamp();
-        req.nonceStr = payReq.getNoncestr();
-        req.sign =payReq.getSign();
+        req.appId = payInfo.getAppId();
+        req.partnerId =payInfo.getPartnerid();
+        req.prepayId =payInfo.getParpayid();
+        req.packageValue = payInfo.getPackageValue();
+        req.nonceStr =payInfo.getNoncestr();
+        req.timeStamp = payInfo.getTimestamp();
+        req.sign =payInfo.getSign();
         return req;
     }
 
