@@ -1,15 +1,15 @@
-##React-Native-Pay
-ÓÃÓÚÎ¢ĞÅ£¬Ö§¸¶±¦Ö§¸¶
+ï»¿##React-Native-Pay
+ç”¨äºå¾®ä¿¡ï¼Œæ”¯ä»˜å®æ”¯ä»˜
 
-###ÈçºÎ°²×°
+###å¦‚ä½•å®‰è£…
 
-1.Ê×ÏÈ°²×°npm°ü
+1.é¦–å…ˆå®‰è£…npmåŒ…
 
 	npm install react-native-paysdk --save
 2.link
 
 	rnpm link react-native-paysdk
-ÊÖ¶¯link~£¨Èç¹û²»ÄÜ¹»×Ô¶¯link£©
+æ‰‹åŠ¨link~ï¼ˆå¦‚æœä¸èƒ½å¤Ÿè‡ªåŠ¨linkï¼‰
 
 ####Android
 
@@ -28,11 +28,11 @@
 	    compile project(':react-native-wx')
 	}
 
-android/app/src/main/java/<ÄãµÄ°üÃû>/MainApplication.javaÖĞÌí¼ÓÈçÏÂÁ½ĞĞ£º
+android/app/src/main/java/<ä½ çš„åŒ…å>/MainApplication.javaä¸­æ·»åŠ å¦‚ä¸‹ä¸¤è¡Œï¼š
 
 
 	...
-	import cn.reactnativepay.payment.PayPackage;  // ÔÚpublic class MainApplicationÖ®Ç°import 
+	import cn.reactnativepay.payment.PayPackage;  // åœ¨public class MainApplicationä¹‹å‰import 
 	 
 	public class MainApplication extends Application implements ReactApplication {
 	 
@@ -45,7 +45,7 @@ android/app/src/main/java/<ÄãµÄ°üÃû>/MainApplication.javaÖĞÌí¼ÓÈçÏÂÁ½ĞĞ£º
 	    @Override
 	    protected List<ReactPackage> getPackages() {
 	      return Arrays.<ReactPackage>asList(
-	          new PayPackage(), // È»ºóÌí¼ÓÕâÒ»ĞĞ 
+	          new PayPackage(), // ç„¶åæ·»åŠ è¿™ä¸€è¡Œ 
 	          new MainReactPackage()
 	      );
 	    }
