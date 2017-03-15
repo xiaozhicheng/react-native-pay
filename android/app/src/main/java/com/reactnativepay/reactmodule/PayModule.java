@@ -61,7 +61,7 @@ public class PayModule extends ReactContextBaseJavaModule{
             promise.reject("-1","支付失败");
         }else {
             WxpayInfo wxPayReq = new WxpayInfo();
-            wxPayReq.setTitle(readableMap.getString("title"));
+            wxPayReq.setTitle(readableMap.getString("desc"));
             wxPayReq.setMoney(readableMap.getString("money"));
             wxPayReq.setAppId(readableMap.getString(Constants.APPID));
             wxPayReq.setPartnerid(readableMap.getString(Constants.PARTNERID));
