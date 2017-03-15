@@ -57,12 +57,27 @@ android/app/src/main/java/<你的包名>/MainApplication.java中添加如下两�
 	  }
 	}
 
+####IOS
+
+	把下行代码添加 AppDelegate.m:
+
+#import "Orientation.h" // <--- import
+
+	@implementation AppDelegate
+
+	  // ...
+
+	  - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+	    return [RnPay getRnPay];
+	  }
+
+	@end
+
 ###如何使用
-####Android
-		
+
 1.支付宝
 	申请自己支付宝商户账号，获取到PARTNER，SELLER，RSA_PRIVATE三个值
-	
+
 	import RnPay from 'react-native';
 
 	onAliPay(){
@@ -91,6 +106,7 @@ android/app/src/main/java/<你的包名>/MainApplication.java中添加如下两�
 	onWxPay(){
 		var params = {
 			money:'',
+			desc:''
 			appid:'',
 			partnerid:'',
 			parpayid:'',
@@ -106,4 +122,4 @@ android/app/src/main/java/<你的包名>/MainApplication.java中添加如下两�
 			})
      }
 
-以上所有未知参数 皆可从后台人员获知
+意思所有未知参数 皆可从后台人员获知
