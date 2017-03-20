@@ -1,6 +1,6 @@
 {
   "name": "react-native-paysdk",
-  "version": "0.4.5",
+  "version": "0.4.8",
   "description": "react-native支付宝，微信支付",
   "main": "index.js",
   "dependencies": {
