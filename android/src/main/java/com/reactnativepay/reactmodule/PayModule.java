@@ -6,12 +6,10 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.reactnativepay.Constants;
-import com.reactnativepay.alipay.AlipayInfo;
 import com.reactnativepay.PayListener;
-import com.reactnativepay.alipay.AliPay;
 import com.reactnativepay.wxpay.WXPay;
 import com.reactnativepay.wxpay.WxpayInfo;
-
+import android.text.TextUtils;
 /**
  * Created by cxz
  */
@@ -24,22 +22,10 @@ public class PayModule extends ReactContextBaseJavaModule{
 
 
     @ReactMethod
-    public void onAliPay(ReadableMap readableMap, final Promise promise){
-        if(readableMap==null){
-            promise.reject("-1","支付失败");
-        }else {
-            String money = readableMap.getString(Constants.MONEY);
-            String subject = readableMap.getString(Constants.SUBJECT);
-            String body = readableMap.getString(Constants.BODY);
-            String partner = readableMap.getString(Constants.PARTNER);
-            String sellerid = readableMap.getString(Constants.SELLERID);
-            String outtraceno = readableMap.getString(Constants.OUTTRACENO);
-            String notifyurl = readableMap.getString(Constants.NOTIFYURL);
-            String privatersa = readableMap.getString(Constants.PRIVATERSA);
-
-            AlipayInfo payInfo = new AlipayInfo(money,subject,body,partner,sellerid,outtraceno,notifyurl,privatersa);
+    public void onAliPay(String orderInfo, final Promise promise){
+        if(TextUtils.isEmpty(orderInfo){
             AliPay aliPay = new AliPay(getCurrentActivity());
-            aliPay.pay(payInfo,new PayListener() {
+            aliPay.pay(orderInfo,new PayListener() {
                 @Override
                 public void onPaySuccess(String resultInfo) {
                     promise.resolve("支付成功");
