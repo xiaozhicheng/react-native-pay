@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.reactnativepay.PayListener;
-
+import java.util.Map;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -29,7 +29,7 @@ public class AliPay {
     }
 
 
-    public void pay(String orderInfo,PayListener listener) {
+    public void pay(final String orderInfo,PayListener listener) {
         this.listener=listener;
 
         Log.i("orderInfo",orderInfo);
@@ -40,7 +40,9 @@ public class AliPay {
                 // 构造PayTask 对象
                 PayTask alipay = new PayTask(activity);
                 // 调用支付接口，获取支付结果
-                String result = alipay.payV2(payInfo,true);
+                Map<String, String> result = alipay.payV2(orderInfo, true);
+				
+
 
                 Message msg = new Message();
                 msg.what = SDK_PAY_FLAG;
@@ -61,7 +63,7 @@ public class AliPay {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case SDK_PAY_FLAG: {
-                    PayResult payResult = new PayResult((String) msg.obj);
+                    PayResult payResult = new PayResult((Map<String, String>) msg.obj);
                     // 支付宝返回此次支付结果及加签，建议对支付宝签名信息拿签约时支付宝提供的公钥做验签
                     String resultInfo = payResult.getResult();
                     String resultStatus = payResult.getResultStatus();
@@ -75,7 +77,7 @@ public class AliPay {
                             listener.onPayConfirm(resultInfo);
                         } else {
                             // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
-                            listener.onPayFail(resultInfo);
+                            listener.onPayFail(resultStatus,resultInfo);
                         }
                     }
                     break;

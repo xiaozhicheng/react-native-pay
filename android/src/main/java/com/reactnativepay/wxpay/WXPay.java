@@ -86,10 +86,10 @@ public class WXPay {
                     listener.onPaySuccess("支付成功");
                     break;
                 case BaseResp.ErrCode.ERR_USER_CANCEL:// 用户取消
-                    listener.onPayFail("用户取消");
+                    listener.onPayFail(String.valueOf(errCode),"支付失败");
                     break;
                 default:
-                    listener.onPayFail(errStr);
+                    listener.onPayFail(String.valueOf(errCode),errStr);
                     break;
             }
             activity.unregisterReceiver(resultRecevier);//取消注册微信支付结果广播接收器

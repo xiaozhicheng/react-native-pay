@@ -1,7 +1,7 @@
-﻿##React-Native-Pay
+﻿React-Native-Pay
 用于微信，支付宝支付
 
-###如何安装
+如何安装
 
 1.首先安装npm包
 
@@ -11,7 +11,7 @@
 	rnpm link react-native-paysdk
 手动link~（如果不能够自动link）
 
-####Android
+Android
 
 	// file: android/settings.gradle
 		...
@@ -57,7 +57,7 @@ android/app/src/main/java/<你的包名>/MainApplication.java中添加如下两�
 	  }
 	}
 
-####IOS
+IOS
 
 	把下行代码添加 AppDelegate.m:
 
@@ -73,23 +73,15 @@ android/app/src/main/java/<你的包名>/MainApplication.java中添加如下两�
 
 	@end
 
-###如何使用
+如何使用
 
-1.支付宝
-	申请自己支付宝商户账号，获取到PARTNER，SELLER，RSA_PRIVATE三个值
+1.[支付宝(签名有后端生成返回)](https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.RLJecF&treeId=54&articleId=106370&docType=1)
 
 	import RnPay from 'react-native';
 
 	onAliPay(){
 		var params = {
-			money:'',
-			subject:'',
-			partner:'',
-			body:'',
-			sellerId:'',
-			outTraceNo:'',
-			notifyUrl:'',
-			privateRsa:''
+			orderString:''
 		}
 		RnPay.onAliPay(params)
 			.then((res)=>{

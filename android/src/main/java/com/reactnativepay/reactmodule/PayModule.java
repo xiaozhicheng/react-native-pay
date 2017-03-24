@@ -5,6 +5,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.reactnativepay.alipay.AliPay;
 import com.reactnativepay.Constants;
 import com.reactnativepay.PayListener;
 import com.reactnativepay.wxpay.WXPay;
@@ -23,7 +24,7 @@ public class PayModule extends ReactContextBaseJavaModule{
 
     @ReactMethod
     public void onAliPay(String orderInfo, final Promise promise){
-        if(TextUtils.isEmpty(orderInfo){
+        if(TextUtils.isEmpty(orderInfo)){
             AliPay aliPay = new AliPay(getCurrentActivity());
             aliPay.pay(orderInfo,new PayListener() {
                 @Override
@@ -31,8 +32,8 @@ public class PayModule extends ReactContextBaseJavaModule{
                     promise.resolve("支付成功");
                 }
                 @Override
-                public void onPayFail(String resultInfo) {
-                    promise.reject("-1","支付失败");
+                public void onPayFail(String code,String resultInfo) {
+                    promise.reject(code,"支付失败");
                 }
                 @Override
                 public void onPayConfirm(String resultInfo) {}
@@ -63,8 +64,8 @@ public class PayModule extends ReactContextBaseJavaModule{
                     promise.resolve("支付成功");
                 }
                 @Override
-                public void onPayFail(String resultInfo) {
-                    promise.reject("-1","支付失败");
+                public void onPayFail(String code,String resultInfo) {
+                    promise.reject(code,"支付失败");
                 }
                 @Override
                 public void onPayConfirm(String resultInfo) {}
