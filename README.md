@@ -16,8 +16,8 @@ Android
 	// file: android/settings.gradle
 		...
  
-		include ':react-native-wx'
-		project(':react-native-wx').projectDir = new File(settingsDir, '../node_modules/react-native-wx/android')
+		include ':react-native-paysdk'
+		project(':react-native-paysdk').projectDir = new File(settingsDir, '../node_modules/react-native-paysdk/android')
 
 
 	// file: android/app/build.gradle
@@ -25,7 +25,7 @@ Android
 	 
 	dependencies {
 	    ...
-	    compile project(':react-native-wx')
+	    compile project(':react-native-paysdk')
 	}
 
 android/app/src/main/java/<你的包名>/MainApplication.java中添加如下两行：
@@ -94,7 +94,7 @@ IOS
 2.微信
 	申请商户，并获取到APPID，
 
-	import RnPay from 'react-native';
+	import RnPay from 'react-native-paysdk';
 
 	onWxPay(){
 		var params = {
