@@ -75,9 +75,10 @@ IOS
 
 如何使用
 
-1.[支付宝(签名有后端生成返回)](https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.RLJecF&treeId=54&articleId=106370&docType=1)
+1.支付宝(签名由后端生成返回)
+    [链接点进去可以看到后端各语言生成orderString方式](https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.RLJecF&treeId=54&articleId=106370&docType=1)
 
-	import RnPay from 'react-native';
+	import RnPay from 'react-native-paysdk';
 
 	onAliPay(){
 		var params = {
