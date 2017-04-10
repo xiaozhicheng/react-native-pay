@@ -1,11 +1,10 @@
-package com.reactnativepay.reactmodule;
+package com.moker.bookteller.reactmodule;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
-import com.reactnativepay.reactmodule.PayModule;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package com.reactnativepay.alipay;
+package com.moker.bookteller.reactmodule.alipay;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,10 +9,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
-import com.reactnativepay.PayListener;
+import com.moker.bookteller.reactmodule.PayListener;
+
 import java.util.Map;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 /**
  * 支付SDK
@@ -32,7 +31,12 @@ public class AliPay {
     public void pay(final String orderInfo,PayListener listener) {
         this.listener=listener;
 
-        Log.i("orderInfo",orderInfo);
+
+        final String newOrderInfo = orderInfo.replace("+","%20");
+
+        Log.i("onAliPay","onAliPay-->"+newOrderInfo);
+
+//        EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
 
         Runnable payRunnable = new Runnable() {
             @Override
@@ -40,9 +44,7 @@ public class AliPay {
                 // 构造PayTask 对象
                 PayTask alipay = new PayTask(activity);
                 // 调用支付接口，获取支付结果
-                Map<String, String> result = alipay.payV2(orderInfo, true);
-				
-
+                Map<String, String> result = alipay.payV2(newOrderInfo, true);
 
                 Message msg = new Message();
                 msg.what = SDK_PAY_FLAG;

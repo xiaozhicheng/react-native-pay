@@ -1,16 +1,19 @@
-package com.reactnativepay.reactmodule;
+package com.moker.bookteller.reactmodule;
 
+import android.text.TextUtils;
+import android.util.Log;
+
+import com.moker.bookteller.reactmodule.alipay.AliPay;
+import com.moker.bookteller.reactmodule.wxpay.WXPay;
+import com.moker.bookteller.reactmodule.wxpay.WxpayInfo;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
-import com.reactnativepay.alipay.AliPay;
-import com.reactnativepay.Constants;
-import com.reactnativepay.PayListener;
-import com.reactnativepay.wxpay.WXPay;
-import com.reactnativepay.wxpay.WxpayInfo;
-import android.text.TextUtils;
+
+import java.util.Date;
+
 /**
  * Created by cxz
  */
@@ -24,7 +27,10 @@ public class PayModule extends ReactContextBaseJavaModule{
 
     @ReactMethod
     public void onAliPay(String orderInfo, final Promise promise){
-        if(TextUtils.isEmpty(orderInfo)){
+
+        Log.i("onAliPay","onAliPay-->"+orderInfo);
+
+        if(!TextUtils.isEmpty(orderInfo)){
             AliPay aliPay = new AliPay(getCurrentActivity());
             aliPay.pay(orderInfo,new PayListener() {
                 @Override
@@ -48,11 +54,9 @@ public class PayModule extends ReactContextBaseJavaModule{
             promise.reject("-1","支付失败");
         }else {
             WxpayInfo wxPayReq = new WxpayInfo();
-            wxPayReq.setTitle(readableMap.getString("desc"));
-            wxPayReq.setMoney(readableMap.getString("money"));
             wxPayReq.setAppId(readableMap.getString(Constants.APPID));
             wxPayReq.setPartnerid(readableMap.getString(Constants.PARTNERID));
-            wxPayReq.setParpayid(readableMap.getString(Constants.PARTNERID));
+            wxPayReq.setPrepayid(readableMap.getString(Constants.PREPAYID));
             wxPayReq.setPackageValue(readableMap.getString(Constants.PACKAGEVALUE));
             wxPayReq.setNoncestr(readableMap.getString(Constants.NONCESTR));
             wxPayReq.setTimestamp(readableMap.getString(Constants.TIMESTAMP));
@@ -65,7 +69,7 @@ public class PayModule extends ReactContextBaseJavaModule{
                 }
                 @Override
                 public void onPayFail(String code,String resultInfo) {
-                    promise.reject(code,"支付失败");
+                    promise.reject(code,resultInfo);
                 }
                 @Override
                 public void onPayConfirm(String resultInfo) {}
@@ -73,8 +77,19 @@ public class PayModule extends ReactContextBaseJavaModule{
         }
     }
 
+
+    public String getTimeStamp(){
+
+        return String.valueOf(System.currentTimeMillis()/1000);
+
+    }
+
+
+
     @Override
     public String getName() {
-            return "RnPay";
+            return "ReactNativePay";
     }
 }
+
+

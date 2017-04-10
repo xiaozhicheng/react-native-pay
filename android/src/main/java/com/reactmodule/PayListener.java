@@ -1,4 +1,4 @@
-package com.reactnativepay;
+package com.moker.bookteller.reactmodule;
 
 /**
  * 支付监听器
@@ -15,7 +15,7 @@ public interface PayListener{
      * 支付失败
      * @param resultInfo 支付结果相关信息
      */
-    void onPayFail(String code,String resultInfo);
+    void onPayFail(String code, String resultInfo);
     /**
      * 订单创建等待用户支付
      * @param resultInfo 支付确认中

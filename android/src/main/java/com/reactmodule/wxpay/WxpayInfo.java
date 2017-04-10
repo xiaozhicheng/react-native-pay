@@ -1,4 +1,4 @@
-package com.reactnativepay.wxpay;
+package com.moker.bookteller.reactmodule.wxpay;
 
 /**
  * Created by Saxon Cheng on 2017/3/14.
@@ -6,31 +6,14 @@ package com.reactnativepay.wxpay;
 
 public class WxpayInfo {
 
-    private String money;
-    private String title;
     private String appId;
     private String partnerid;
-    private String parpayid;
+    private String prepayid;
     private String packageValue;
     private String noncestr;
     private String timestamp;
     private String sign;
 
-    public void setMoney(String money) {
-        this.money = money;
-    }
-
-    public String getMoney() {
-        return money;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return title;
-    }
 
     public String getAppId() {
         return appId;
@@ -48,12 +31,12 @@ public class WxpayInfo {
         this.partnerid = partnerid;
     }
 
-    public String getParpayid() {
-        return parpayid;
+    public String getPrepayid() {
+        return prepayid;
     }
 
-    public void setParpayid(String parpayid) {
-        this.parpayid = parpayid;
+    public void setPrepayid(String prepayid) {
+        this.prepayid = prepayid;
     }
 
     public String getPackageValue() {
