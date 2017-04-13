@@ -1,4 +1,4 @@
-package com.moker.bookteller.reactmodule;
+package com.reactmodule;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;

@@ -1,4 +1,4 @@
-package com.moker.bookteller.reactmodule;
+package com.reactmodule;
 
 /**
  * Created by Saxon Cheng on 2017/3/13.

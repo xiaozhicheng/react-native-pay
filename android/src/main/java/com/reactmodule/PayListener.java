@@ -1,4 +1,4 @@
-package com.moker.bookteller.reactmodule;
+package com.reactmodule;
 
 /**
  * 支付监听器

@@ -1,4 +1,4 @@
-package com.moker.bookteller.reactmodule.alipay;
+package com.reactmodule.alipay;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,7 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
-import com.moker.bookteller.reactmodule.PayListener;
+import com.reactmodule.PayListener;
 
 import java.util.Map;
 

@@ -31,6 +31,9 @@
                 android:exported="false"
                 android:screenOrientation="behind" >
         </activity>
+
+        <activity android:name="com.reactmodule.wxapi.WXPayEntryActivity"
+                  android:exported="true"/>
     </application>
 
 </manifest>
