@@ -19,14 +19,14 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
  */
 public class WXPay implements IWXAPIEventHandler{
 
-    public static com.moker.bookteller.reactmodule.wxpay.WXPay mWxPay = new com.moker.bookteller.reactmodule.wxpay.WXPay();
+    public static WXPay mWxPay = new WXPay();
 
     private IWXAPI mWxApi ;
     private PayListener payListener;
 
-    public static com.moker.bookteller.reactmodule.wxpay.WXPay newInstance() {
+    public static WXPay newInstance() {
         if(mWxPay==null){
-            mWxPay = new com.moker.bookteller.reactmodule.wxpay.WXPay();
+            mWxPay = new WXPay();
         }
         return mWxPay;
     }
@@ -34,7 +34,7 @@ public class WXPay implements IWXAPIEventHandler{
     /**
      * 微信注册
      */
-    public com.moker.bookteller.reactmodule.wxpay.WXPay registerWxApi(Activity activity, String appId){
+    public WXPay registerWxApi(Activity activity, String appId){
         mWxApi = WXAPIFactory.createWXAPI(activity, null);
         mWxApi.registerApp(appId);
         return newInstance();
