@@ -98,3 +98,27 @@ android/app/src/main/java/<你的包名>/MainApplication.java中添加如下两�
      }
 
     所有未知参数 皆可从后台人员获知
+
+3. 微信支付 ios AppDegelate.m文件添加内容
+
+    import "WXApi.h"
+
+    ...
+
+    - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+      if ([url.host isEqualToString:@"safepay"]) {  //支付宝回调
+        ...//添加回调方法
+        return YES;
+      }else{
+        return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+      }}
+
+    - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+
+      if ([url.host isEqualToString:@"safepay"]) {  //支付宝回调
+            ...//添加回调方法
+            return YES;
+      }else{   //微信回调
+            return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+      }
+     }
